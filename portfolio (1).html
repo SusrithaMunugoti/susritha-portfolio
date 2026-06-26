@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Susritha Munugoti — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --pink-light: #FDF0F5;
+      --pink-soft: #F9D8E8;
+      --pink-mid: #E8A0C0;
+      --pink-strong: #C4527A;
+      --pink-deep: #8B2A4A;
+      --bg: #FFFBFD;
+      --white: #ffffff;
+      --text: #1a1a1a;
+      --text-muted: #7a6070;
+      --border: #F0D5E2;
+      --border-strong: #E4BACE;
+      --radius-card: 16px;
+      --radius-tag: 20px;
+    }
+
+    body {
+      font-family: 'DM Sans', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* ── Top bar ── */
+    .topbar {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .topbar-name {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--pink-deep);
+      letter-spacing: -0.01em;
+    }
+
+    .topbar-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .topbar-links a {
+      font-size: 13px;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .topbar-links a:hover { color: var(--pink-strong); }
+
+    /* ── Hero ── */
+    .hero {
+      text-align: center;
+      padding: 4rem 2rem 3rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .hero-pill {
+      display: inline-block;
+      background: var(--pink-soft);
+      color: var(--pink-deep);
+      font-size: 12px;
+      font-weight: 500;
+      padding: 5px 14px;
+      border-radius: var(--radius-tag);
+      letter-spacing: 0.04em;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 42px;
+      font-weight: 400;
+      color: var(--text);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--pink-strong);
+    }
+
+    .hero-bio {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.7;
+      max-width: 440px;
+      margin: 0 auto 2rem;
+    }
+
+    .hero-links {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--pink-strong);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 500;
+      padding: 10px 20px;
+      border-radius: var(--radius-tag);
+      text-decoration: none;
+      transition: background 0.15s;
+    }
+
+    .btn-primary:hover { background: var(--pink-deep); }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--pink-strong);
+      font-size: 13px;
+      font-weight: 500;
+      padding: 10px 20px;
+      border-radius: var(--radius-tag);
+      border: 1px solid var(--border-strong);
+      text-decoration: none;
+      transition: background 0.15s;
+    }
+
+    .btn-ghost:hover { background: var(--pink-light); }
+
+    /* ── Section ── */
+    .section {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 2rem 4rem;
+    }
+
+    .section-eyebrow {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--pink-mid);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-eyebrow::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ── Project cards ── */
+    .projects {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-card);
+      padding: 1.5rem;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .card:hover {
+      border-color: var(--pink-mid);
+      box-shadow: 0 4px 20px rgba(196, 82, 122, 0.08);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .card-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text);
+      letter-spacing: -0.01em;
+    }
+
+    .card-link {
+      font-size: 12px;
+      color: var(--pink-strong);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      white-space: nowrap;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .card-link:hover { text-decoration: underline; }
+
+    .card-link svg {
+      width: 13px;
+      height: 13px;
+      flex-shrink: 0;
+    }
+
+    .card-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.65;
+      margin-bottom: 1rem;
+    }
+
+    .card-features {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      margin-bottom: 1rem;
+    }
+
+    .feature {
+      font-size: 12px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      line-height: 1.5;
+    }
+
+    .feature-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--pink-mid);
+      flex-shrink: 0;
+      margin-top: 5px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .tag {
+      font-size: 11px;
+      font-weight: 500;
+      padding: 3px 10px;
+      border-radius: var(--radius-tag);
+      background: var(--pink-light);
+      color: var(--pink-deep);
+      border: 1px solid var(--pink-soft);
+    }
+
+    /* ── About strip ── */
+    .about-strip {
+      background: var(--pink-light);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 2.5rem 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .about-inner {
+      max-width: 720px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .about-block h3 {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--pink-deep);
+      margin-bottom: 0.4rem;
+    }
+
+    .about-block p {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 12px;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+    }
+
+    footer a { color: var(--pink-strong); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 30px; }
+      .about-inner { grid-template-columns: 1fr; gap: 1rem; }
+      .topbar-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="topbar">
+    <span class="topbar-name">Susritha Munugoti</span>
+    <div class="topbar-links">
+      <a href="https://github.com/SusrithaMunugoti" target="_blank">GitHub</a>
+      <a href="#projects">Projects</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <span class="hero-pill">Coding Portfolio</span>
+    <h1>Building things that<br><em>actually help people</em></h1>
+    <p class="hero-bio">A collection of projects focused on real-world problem solving — from wildfire preparedness to allergy awareness to tools for everyday browsing.</p>
+    <div class="hero-links">
+      <a class="btn-primary" href="https://github.com/SusrithaMunugoti" target="_blank">View GitHub</a>
+      <a class="btn-ghost" href="#projects">See projects</a>
+    </div>
+  </section>
+
+  <div class="about-strip">
+    <div class="about-inner">
+      <div class="about-block">
+        <h3>Background</h3>
+        <p>Co-founded InnovaTech Girls, a student-led nonprofit inspiring girls in technology through coding workshops, app development, and STEM outreach.</p>
+      </div>
+      <div class="about-block">
+        <h3>Focus</h3>
+        <p>Building practical apps and tools using Swift, JavaScript, Node.js, and Chrome Extension APIs — learning by shipping real projects.</p>
+      </div>
+    </div>
+  </div>
+
+  <section class="section" id="projects">
+    <p class="section-eyebrow">Projects</p>
+    <div class="projects">
+
+      <div class="card">
+        <div class="card-header">
+          <p class="card-title">Code Snippet Journal</p>
+          <a class="card-link" href="https://github.com/SusrithaMunugoti/code-snippet-journal" target="_blank">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            View on GitHub
+          </a>
+        </div>
+        <p class="card-desc">A Chrome browser extension for saving, tagging, and annotating code snippets found while browsing — great for beginners learning by exploring the web.</p>
+        <div class="card-features">
+          <div class="feature"><span class="feature-dot"></span>Right-click any highlighted code to save it instantly</div>
+          <div class="feature"><span class="feature-dot"></span>Add tags and notes, then search by keyword or tag</div>
+          <div class="feature"><span class="feature-dot"></span>All snippets stored locally in your browser</div>
+        </div>
+        <div class="tags">
+          <span class="tag">JavaScript</span>
+          <span class="tag">HTML</span>
+          <span class="tag">CSS</span>
+          <span class="tag">Chrome Extension</span>
+          <span class="tag">Manifest V3</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <p class="card-title">FireLink — Wildfire Readiness MVP</p>
+          <a class="card-link" href="https://github.com/SusrithaMunugoti/FireLinkProject" target="_blank">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            View on GitHub
+          </a>
+        </div>
+        <p class="card-desc">A wildfire preparedness app that helps homeowners assess their risk and take action using real geospatial data from USFS Wildfire Hazard Potential (2023).</p>
+        <div class="card-features">
+          <div class="feature"><span class="feature-dot"></span>Dual-risk assessment: location-based exposure and structural vulnerability</div>
+          <div class="feature"><span class="feature-dot"></span>Real geospatial data via ArcGIS REST API with 24-hour caching</div>
+          <div class="feature"><span class="feature-dot"></span>Prioritized mitigation tasks and weekly action plans</div>
+        </div>
+        <div class="tags">
+          <span class="tag">Node.js</span>
+          <span class="tag">Express</span>
+          <span class="tag">ArcGIS API</span>
+          <span class="tag">OpenStreetMap</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <p class="card-title">AllergenX — Allergy Awareness iOS App</p>
+        </div>
+        <p class="card-desc">An iOS app helping the 32 million Americans with allergies manage their condition more safely. Tackles food label scanning, pollen tracking, EpiPen reminders, and emergency alerts in one place.</p>
+        <div class="card-features">
+          <div class="feature"><span class="feature-dot"></span>Scans ingredient lists to detect hidden allergens via Nutritionix AI</div>
+          <div class="feature"><span class="feature-dot"></span>Real-time local pollen levels via AccuWeather API</div>
+          <div class="feature"><span class="feature-dot"></span>EpiPen expiry reminders and quick emergency contact notifications</div>
+        </div>
+        <div class="tags">
+          <span class="tag">Swift</span>
+          <span class="tag">Xcode</span>
+          <span class="tag">AccuWeather API</span>
+          <span class="tag">Nutritionix AI</span>
+          <span class="tag">iOS</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <p>Built by <a href="https://github.com/SusrithaMunugoti" target="_blank">Susritha Munugoti</a></p>
+  </footer>
+
+</body>
+</html>
