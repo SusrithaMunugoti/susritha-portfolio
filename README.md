@@ -1,6 +1,4 @@
-That actually looks really good already! It's clean and readable. A few small tweaks can make it look more polished — adding badges for the tech stack and a table of contents at the top. Here's an upgraded version to paste:
 
----
 
 # Susritha's Portfolio
 
